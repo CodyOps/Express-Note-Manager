@@ -29,4 +29,13 @@ module.exports = (app) => {
       res.json(false);
     }
   });
+
+  //Code to clear out note if desired
+
+  app.post("/api/clear", (req, res) => {
+    //Empty out the arrays of the data
+    notesData.length = 0;
+
+    res.json({ ok: true });
+  });
 };
