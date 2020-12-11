@@ -16,3 +16,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //ROUTER
+//points our server to a series of "route" files.
+//These routes give our server a map of how to respond when uses visit or request data from the various urls
+
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
+
+//LISTENER
+//The code effectively starts out server
+//will let us know in the terminal when the app is listening
+
+app.listen(PORT, () => {
+  console.log(`App listening on PORT: ${PORT}`);
+});
