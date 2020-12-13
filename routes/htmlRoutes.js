@@ -14,8 +14,7 @@ module.exports = (app) => {
     res.sendFile(path.join(__dirname, "../public/notes.html"));
   });
 
-  //if no matching route is found, default to homepage
-  app.get("*", (req, res) => {
+  app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 };
