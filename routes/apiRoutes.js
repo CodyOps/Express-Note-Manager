@@ -4,6 +4,7 @@
 const fs = require("fs");
 const notesData = require("../db/db.json");
 const path = require("path");
+const { networkInterfaces } = require("os");
 
 //ROUTING
 module.exports = (app) => {
@@ -22,6 +23,9 @@ module.exports = (app) => {
     app.post("/api/notes", function (req, res) {
       // Takes the new note and stores it into the db.json then shows that the new note has been logged
       let newNote = req.body;
+      // newNote.id = math.floor(Math.random() * 100) + 1;
+      let uniqueID = Math.floor(Math.random() * 100);
+      newNote.id = uniqueID;
       notes.push(newNote);
       updateDb();
       return console.log("New note added: " + newNote.title);
