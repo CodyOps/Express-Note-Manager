@@ -2,6 +2,7 @@
 //Added the npm packages that will give our server helpful functionality
 const fs = require("fs");
 const express = require("express");
+const path = require("path");
 
 //EXPRESS CONFIGURATION
 //Set up the basic properties of the express server and tells node we are creating an express server
@@ -14,7 +15,7 @@ const PORT = process.env.PORT || 8080;
 //Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(express.static("public"));
 //ROUTER
 //points our server to a series of "route" files.
 //These routes give our server a map of how to respond when uses visit or request data from the various urls

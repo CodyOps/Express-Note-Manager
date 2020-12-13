@@ -3,18 +3,15 @@
 //These data sources hold arrays of information on notes-data etc.
 const fs = require("fs");
 const notesData = require("../db/db.json");
+const path = require("path");
 
 //ROUTING
-
 module.exports = (app) => {
   // Set up load filen return and let us know if there is an error
   fs.readFile("db/db.json", "utf8", (err, data) => {
     if (err) throw err;
-
     var notes = JSON.parse(data);
-
     // API ROUTES
-
     // API route for the notes
     app.get("/api/notes", function (req, res) {
       // Gets the the db.json file and returns the data in json format
