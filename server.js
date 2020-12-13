@@ -1,6 +1,6 @@
 //DEPENDENCIES
 //Added the npm packages that will give our server helpful functionality
-
+const fs = require("fs");
 const express = require("express");
 
 //EXPRESS CONFIGURATION

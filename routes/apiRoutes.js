@@ -1,7 +1,7 @@
 //LOAD DATA
 //we will link out routes to a series of "data" sources.
 //These data sources hold arrays of information on notes-data etc.
-
+const fs = require("fs");
 const notesData = require("../db/db.json");
 
 //ROUTING

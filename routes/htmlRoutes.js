@@ -1,6 +1,6 @@
 //DEPENDENCIES
 //We need to include the path packages to get the correct file path for out html
-
+const fs = require("fs");
 const path = require("path");
 
 //ROUTING
