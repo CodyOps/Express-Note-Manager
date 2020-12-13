@@ -2,11 +2,10 @@
 
 ## Table of Contents
 
-- [Username](#username)
-- [Repository](#repository)
 - [Title](#title)
 - [Description](#description)
 - [User Story](#story)
+- [Images](#photos)
 - [Contribution](#contribution)
 - [License](#license)
 
@@ -29,6 +28,10 @@ As a user, I want to be able to write and save notes to a server that will store
 ## Photos
 
 _Photos of this Project:_
+
+![Screen Shot 2020-12-13 at 3 42 10 PM](https://user-images.githubusercontent.com/70075378/102026254-febb3f00-3d59-11eb-9654-284f5aabee03.png)
+
+![Screen Shot 2020-12-13 at 3 42 34 PM](https://user-images.githubusercontent.com/70075378/102026260-08dd3d80-3d5a-11eb-9a22-108b58f119d6.png)
 
 ## License
 
