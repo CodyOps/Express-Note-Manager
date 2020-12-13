@@ -7,35 +7,47 @@ const notesData = require("../db/db.json");
 //ROUTING
 
 module.exports = (app) => {
-  //API GET Requests
-  //Below code handles when a user "visits" a page.
-  //In each of the cases below the user visits a link
+  // Set up load filen return and let us know if there is an error
+  fs.readFile("db/db.json", "utf8", (err, data) => {
+    if (err) throw err;
 
-  app.get("/api/notes", (req, res) => res.json(notesData));
+    var notes = JSON.parse(data);
 
-  //API POST REQUESTS
-  //Below code handles when a user submits a note and thus submits data to the server.
-  //In each of the cases below, when a user submits form data (JSON object), the JSON is pushed to the appropriate JS Array
-  //Request --> Server --> Saves data to notesData array
+    // API ROUTES
 
-  app.post("/api/notes", (req, res) => {
-    //Our server will respond to requests and let the user know if they have a note or not.
-    //It will do this by sending out the value "true" have a note.
-    //req.body is available since we are using the body parsing middleware
-    if (notesData.length.length < 10) {
-      notesData.push(req.body);
-      res.json(true);
-    } else {
-      res.json(false);
+    // API route for the notes
+    app.get("/api/notes", function (req, res) {
+      // Gets the the db.json file and returns the data in json format
+      res.json(notes);
+    });
+
+    // API post route for the notes
+    app.post("/api/notes", function (req, res) {
+      // Takes the new note and stores it into the db.json then shows that the new note has been logged
+      let newNote = req.body;
+      notes.push(newNote);
+      updateDb();
+      return console.log("Added new note: " + newNote.title);
+    });
+
+    // Locates a note with a specific id
+    app.get("/api/notes/:id", function (req, res) {
+      res.json(notes[req.params.id]);
+    });
+
+    // Deletes a note using a specific id
+    app.delete("/api/notes/:id", function (req, res) {
+      notes.splice(req.params.id, 1);
+      updateDb();
+      console.log("Deleted note with id of: " + req.params.id);
+    });
+
+    //updates the json file when a note is added or deleted
+    function updateDb() {
+      fs.writeFile("db/db.json", JSON.stringify(notes, "\t"), (err) => {
+        if (err) throw err;
+        return true;
+      });
     }
-  });
-
-  //Code to clear out note if desired
-
-  app.post("/api/clear", (req, res) => {
-    //Empty out the arrays of the data
-    notesData.length = 0;
-
-    res.json({ ok: true });
   });
 };
